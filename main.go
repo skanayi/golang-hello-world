@@ -10,7 +10,7 @@ func main() {
 
 	fmt.Println("starting hello world")
 	http.HandleFunc("/", hello)
-	http.HandleFunc("/demo", demo)
+	http.HandleFunc("/demox", demo)
 	http.ListenAndServe(":80", nil)
 }
 
