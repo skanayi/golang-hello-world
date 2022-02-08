@@ -10,6 +10,7 @@ func main() {
 
 	fmt.Println("starting hello world")
 	http.HandleFunc("/", hello)
+	http.HandleFunc("/demo", demo)
 	http.ListenAndServe(":80", nil)
 }
 
@@ -27,5 +28,14 @@ func hello(w http.ResponseWriter, req *http.Request) {
 	hs = "Hello world ,hostname is: " + hs
 
 	w.Write([]byte(hs))
+
+}
+
+func demo(w http.ResponseWriter, req *http.Request) {
+	fmt.Println("received request from", req.RemoteAddr)
+	f, _ := os.Open("/tmp/soumya/podi_undakkanni.txt")
+	f.WriteString("buhaaa")
+
+	w.Write([]byte("success"))
 
 }
