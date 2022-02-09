@@ -1,17 +1,23 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"net/http"
 	"os"
+	"strconv"
 )
 
 func main() {
+	var flagvar int
+	flag.IntVar(&flagvar, "port", 80, "mention port numbe here")
+	flag.Parse()
+	fmt.Println("port configured is", flagvar)
 
 	fmt.Println("starting hello world")
 	http.HandleFunc("/", hello)
 	http.HandleFunc("/demox", demo)
-	http.ListenAndServe(":81", nil)
+	http.ListenAndServe(":"+strconv.Itoa(flagvar), nil)
 }
 
 func hello(w http.ResponseWriter, req *http.Request) {
