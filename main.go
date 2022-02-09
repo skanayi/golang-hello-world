@@ -39,7 +39,10 @@ func hello(w http.ResponseWriter, req *http.Request) {
 
 func demo(w http.ResponseWriter, req *http.Request) {
 	fmt.Println("received request from", req.RemoteAddr)
-	f, _ := os.Open("/tmp/soumya/podi_undakkanni.txt")
+	f, err := os.Open("/tmp/soumya/podi_undakkanni.txt")
+	if err != nil {
+		panic(fmt.Sprintf("error occured %v", err))
+	}
 	f.WriteString("buhaaa")
 
 	w.Write([]byte("success"))
