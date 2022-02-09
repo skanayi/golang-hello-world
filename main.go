@@ -11,7 +11,7 @@ func main() {
 	fmt.Println("starting hello world")
 	http.HandleFunc("/", hello)
 	http.HandleFunc("/demox", demo)
-	http.ListenAndServe(":80", nil)
+	http.ListenAndServe(":81", nil)
 }
 
 func hello(w http.ResponseWriter, req *http.Request) {
